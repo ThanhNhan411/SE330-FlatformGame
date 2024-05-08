@@ -16,13 +16,11 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        // Implementation code here
-        System.out.println("Mouse Dragged");
+    	// TODO Auto-generated method stub
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        // Implementation code here
     }
 
     @Override
@@ -34,25 +32,21 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        // Implementation code here
-        System.out.println("Mouse Pressed");
+    	// TODO Auto-generated method stub
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        // Implementation code here
-        System.out.println("Mouse Released");
+    	// TODO Auto-generated method stub
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        // Implementation code here
-        System.out.println("Mouse Entered");
+    	// TODO Auto-generated method stub
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        // Implementation code here
-        System.out.println("Mouse Exited");
+    	
     }
 }

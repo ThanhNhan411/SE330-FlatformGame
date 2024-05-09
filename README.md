@@ -1,6 +1,6 @@
 
 ## Giới thiệu
-Đây là hướng dẫn để bạn có thể chạy dự án Java của chúng tôi một cách dễ dàng. Dự án này được viết bằng ngôn ngữ Java và có thể cung cấp các tính năng nhất định, tùy thuộc vào loại dự án bạn đang làm việc.
+Đây là dự án game platform "**The Pirate**" được phát triển bằng ngôn ngữ lập trình java, bạn có thể chạy dự án của chúng tôi thông qua hướng dẫn bên dưới:
 
 ## Yêu cầu
 1. **Java Development Kit (JDK)**: Đảm bảo JDK đã được cài đặt trên máy tính của bạn. Bạn có thể tải và cài đặt JDK từ trang web chính thức của Oracle hoặc OpenJDK.

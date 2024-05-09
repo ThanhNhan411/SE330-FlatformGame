@@ -1,18 +1,32 @@
-## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Giới thiệu
+Đây là hướng dẫn để bạn có thể chạy dự án Java của chúng tôi một cách dễ dàng. Dự án này được viết bằng ngôn ngữ Java và có thể cung cấp các tính năng nhất định, tùy thuộc vào loại dự án bạn đang làm việc.
 
-## Folder Structure
+## Yêu cầu
+1. **Java Development Kit (JDK)**: Đảm bảo JDK đã được cài đặt trên máy tính của bạn. Bạn có thể tải và cài đặt JDK từ trang web chính thức của Oracle hoặc OpenJDK.
+2. **Môi trường phát triển (IDE)**: Một IDE như IntelliJ IDEA, Eclipse hoặc NetBeans sẽ rất hữu ích cho việc phát triển và chạy dự án.
 
-The workspace contains two folders by default, where:
+## Hướng dẫn cài đặt và chạy
+1. **Clone dự án**: Mở terminal (hoặc command prompt trên Windows) và chạy lệnh sau:
+    ```
+    git clone https://github.com/ThanhNhan411/SE330-FlatformGame
+    ```
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+2. **Mở dự án trong IDE**: Mở IDE của bạn và import dự án đã được clone.
+3. **Chạy ứng dụng từ IDE**:
+    - Tìm và mở file chứa hàm main trong thư mục `src/main`
+    - Bấm chuột phải vào file và chọn "Run".
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+4. **Chạy ứng dụng từ command line**:
+    - Mở terminal hoặc command prompt và di chuyển đến thư mục chứa dự án sau đó chạy lệnh:
+      ```
+      cd ./src/main
+      ```
+    - Biên dịch dự án bằng cách chạy lệnh sau:
+        ```
+        javac MainClass.java
+        ```
+    - Chạy ứng dụng bằng lệnh sau:
+        ```
+        java MainClass
+        ```

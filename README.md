@@ -14,7 +14,7 @@
 
 2. **Mở dự án trong IDE**: Mở IDE của bạn và import dự án đã được clone.
 3. **Chạy ứng dụng từ IDE**:
-    - Tìm và mở file chứa hàm main trong thư mục `src/main`
+    - Tìm và mở file MainClass.java chứa hàm main trong thư mục `src/main`
     - Bấm chuột phải vào file và chọn "Run".
 
 4. **Chạy ứng dụng từ command line**:

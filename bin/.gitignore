@@ -1,13 +1,5 @@
-/inputs/
-/main/
+/health_power_bar.png
 /entities/
-/gamestates/
-/levels/
-/ui/
 /utilz/
-/background_menu.png
-/level_one_data_long.png
-/pause_menu.png
-/sound_button.png
-/urm_buttons.png
-/volume_buttons.png
+/ui/
+/gamestates/

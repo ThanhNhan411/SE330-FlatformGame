@@ -2,8 +2,7 @@ package entities;
 
 import static utilz.Constants.PlayerConstants.*;
 import static utilz.HelpMethods.*;
-import static utilz.Constants.GRAVITY;
-import static utilz.Constants.ANI_SPEED;
+import static utilz.Constants.*;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -40,24 +39,22 @@ public class Player extends Entity {
 	private int healthBarHeight = (int) (4 * Game.SCALE);
 	private int healthBarXStart = (int) (34 * Game.SCALE);
 	private int healthBarYStart = (int) (14 * Game.SCALE);
-	
-	
 	private int healthWidth = healthBarWidth;
 	
 	//AttackBox
-	
-	
 	private int flipX = 0;
 	private int flipW = 1;
 	private boolean attackChecked;
 	private Playing playing;
+	
+	private int tileY = 0;
 
 	public Player(float x, float y, int width, int height, Playing playing) {
 		super(x, y, width, height);
 		this.playing = playing;
 		this.state = IDLE;
 		this.maxHealth = 100;
-		this.currentHealth = maxHealth;
+		this.currentHealth = 35;
 		this.walkSpeed = Game.SCALE * 1.0f;
 		loadAnimations();
 		initHitbox(20, 27);
@@ -79,23 +76,50 @@ public class Player extends Entity {
 	public void update() {
 		updateHealthBar();
 		
-		if(currentHealth <= 0) {
-			playing.setGameOver(true);
+		if (currentHealth <= 0) {
+			if (state != DEAD) {
+				state = DEAD;
+				aniTick = 0;
+				aniIndex = 0;
+				playing.setPlayerDying(true);
+			} else if (aniIndex == GetSpriteAmount(DEAD) - 1 && aniTick >= ANI_SPEED - 1) {
+				playing.setGameOver(true);
+			} else
+				updateAnimationTick();
+
 			return;
 		}
+		
 		updateAttackBox();
+		
 		updatePos();
+		if (moving) {
+			checkPotionTouched();
+			checkSpikesTouched();
+			tileY = (int) (hitbox.y / Game.TILES_SIZE);
+		}
 		if(attacking)
 			checkAttack();
+		
 		updateAnimationTick();
 		setAnimation();
 	}
+	
+	private void checkSpikesTouched() {
+		playing.checkSpikesTouched(this);
+
+	}
+
+	private void checkPotionTouched() {
+		playing.checkPotionTouched(hitbox);
+	}
 
 	private void checkAttack() {
-		if(attackChecked || aniIndex != 1)
+		if (attackChecked || aniIndex != 1)
 			return;
 		attackChecked = true;
 		playing.checkEnemyHit(attackBox);
+		playing.checkObjectHit(attackBox);
 	}
 
 	private void updateAttackBox() {
@@ -243,13 +267,21 @@ public class Player extends Entity {
 	}
 	
 	public void changeHealth(int value) {
-		currentHealth -= value;
+		currentHealth += value;
 		
 		if(currentHealth <= 0) {
 			currentHealth = 0;
 			//gameOver();
 		}else if (currentHealth >= maxHealth) 
 			currentHealth = maxHealth;
+	}
+	
+	public void kill() {
+		currentHealth = 0;
+	}
+
+	public void changePower(int value) {
+		System.out.println("Added power!");
 	}
 
 	private void loadAnimations() {
@@ -313,6 +345,10 @@ public class Player extends Entity {
 		
 		if (!IsEntityOnFloor(hitbox, lvlData))
 			inAir = true;
+	}
+	
+	public int getTileY() {
+		return tileY;
 	}
 
 }

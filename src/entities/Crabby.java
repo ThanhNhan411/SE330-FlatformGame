@@ -1,18 +1,15 @@
 package entities;
 
-import static utilz.Constants.Directions.*;
-
 import static utilz.Constants.EnemyConstants.*;
-import static utilz.HelpMethods.CanMoveHere;
-import static utilz.HelpMethods.GetEntityYPosUnderRoofOrAboveFloor;
-import static utilz.HelpMethods.IsEntityOnFloor;
-import static utilz.HelpMethods.IsFloor;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 
+import static utilz.Constants.Directions.*;
+
 import main.Game;
+
 public class Crabby extends Enemy{
 	
 	private int attackBoxOffsetX;
@@ -41,18 +38,16 @@ public class Crabby extends Enemy{
 	}
 
 	private void updateBehavior(int[][] lvlData, Player player) {
-		if(firstUpdate) {
+		if(firstUpdate) 
 			firstUpdateCheck(lvlData);
-		}
-		if(inAir) {
+		if(inAir) 
 			updateInAir(lvlData);
-		}else {
+		else {
 			switch(state) {
 			case IDLE:
 				newState(RUNNING);
 				break;
 			case RUNNING:
-				
 				if(canSeePlayer(lvlData, player)) {
 					turnTowardsPlayer(player);
 					if(isPlayerCloseForAttack(player))
@@ -65,7 +60,7 @@ public class Crabby extends Enemy{
 				if(aniIndex == 0)
 					attackChecked = false;
 				if(aniIndex == 3 && !attackChecked)
-					checkEnemyHit(attackBox, player);
+					checkPlayerHit(attackBox, player);
 				break;
 			case HIT:
 				break;

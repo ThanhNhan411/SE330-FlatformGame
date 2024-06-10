@@ -26,14 +26,15 @@ public class LevelManager {
 		lvlIndex++;
 		if(lvlIndex >= levels.size()) {
 			lvlIndex = 0;
-			System.out.println("Completed");
+			System.out.println("No more levels! Game Completed!");
 			Gamestate.state = Gamestate.MENU;
 		}
 		
 		Level newLevel = levels.get(lvlIndex);
-		game.getPlaying().getEnemyManager()	.loadEnemies(newLevel);
+		game.getPlaying().getEnemyManager().loadEnemies(newLevel);
 		game.getPlaying().getPlayer().loadLvlData(newLevel.getLevelData());
 		game.getPlaying().setMaxLvlOffset(newLevel.getLvlOffset());
+		game.getPlaying().getObjectManager().loadObjects(newLevel);
 	}
 
 	private void buildAllLevels() {

@@ -6,13 +6,12 @@ import static utilz.HelpMethods.*;
 import java.awt.geom.Rectangle2D;
 
 import static utilz.Constants.Directions.*;
-import static utilz.Constants.GRAVITY;
-import static utilz.Constants.ANI_SPEED;
+import static utilz.Constants.*;
+
 import main.Game;
 
 public abstract class Enemy extends Entity {
 	protected int enemyType;
-	
 	protected boolean firstUpdate = true;
 	protected int walkDir = LEFT;
 	protected int tileY;
@@ -79,13 +78,13 @@ public abstract class Enemy extends Entity {
 		return false;
 	}
 	
-	private boolean isPlayerInRange(Player player) {
-		int absValue = (int)Math.abs(player.hitbox.x - hitbox.x);
+	protected boolean isPlayerInRange(Player player) {
+		int absValue = (int) Math.abs(player.hitbox.x - hitbox.x);
 		return absValue <= attackDistance * 5;
 	}
 	
 	protected boolean isPlayerCloseForAttack(Player player) {
-		int absValue = (int)Math.abs(player.hitbox.x - hitbox.x);
+		int absValue = (int) Math.abs(player.hitbox.x - hitbox.x);
 		return absValue <= attackDistance;
 	}
 
@@ -103,9 +102,9 @@ public abstract class Enemy extends Entity {
 			newState(HIT);
 	}
 	
-	protected void checkEnemyHit(Rectangle2D.Float attackBox, Player player) {
+	protected void checkPlayerHit(Rectangle2D.Float attackBox, Player player) {
 		if(attackBox.intersects(player.hitbox))
-			player.changeHealth(GetEnemyDmg(enemyType));
+			player.changeHealth(-GetEnemyDmg(enemyType));
 		attackChecked = true;
 	}
 
